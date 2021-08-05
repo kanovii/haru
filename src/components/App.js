@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {authService} from '../firebase';
 import AppRouter from './Router';
+import './App.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,9 +20,12 @@ function App() {
 
   return (
     <>
-
-      {init ? <AppRouter isLoggedIn={isLoggedIn}/> : 'initializing...'}
+      <div className="containers"> 
+        {init ? <AppRouter isLoggedIn={isLoggedIn}/> : 'initializing...'}
       <footer>&copy; haru {new Date().getFullYear()}</footer>
+      </div>
+     
+      
     </>
   );
 }

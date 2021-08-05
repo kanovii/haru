@@ -1,0 +1,33 @@
+.containers {
+    width: 80vw;
+    height: 300px;
+    box-shadow: 1px 1px 5px 2px rgb(201, 201, 201);
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+ul{
+    text-decoration: none;
+    list-style-type: none;
+    padding: 7px;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+li{
+    margin: 10px;
+}
+body{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+
+.what_is {
+    
+}

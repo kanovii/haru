@@ -46,8 +46,8 @@ const Auth = () => {
             console.log(data);
         }
     return(
-        <div>
-            <form onSubmit={onSubmit}>
+        <div >
+            <form onSubmit={onSubmit} >
                 <input onChange={onChange} name='email' type='text' placeholder='email' required value={email} />
                 <input onChange={onChange} name='password' type='password' placeholder='password' required value={password} />
                 <input type='submit' value={ newAccount ?'Sign In' : 'Create New' } />
