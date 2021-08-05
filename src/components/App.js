@@ -1,0 +1,29 @@
+import React, {useEffect, useState} from 'react';
+import {authService} from '../firebase';
+import AppRouter from './Router';
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [init, setInit] = useState(false);
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if(user) {
+        setIsLoggedIn(true);
+      }else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    });
+    
+  })
+
+  return (
+    <>
+
+      {init ? <AppRouter isLoggedIn={isLoggedIn}/> : 'initializing...'}
+      <footer>&copy; haru {new Date().getFullYear()}</footer>
+    </>
+  );
+}
+
+export default App;
