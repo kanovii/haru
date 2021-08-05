@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/haru/static/js/main.4975d228.chunk.js",
+    "main.js.map": "/haru/static/js/main.4975d228.chunk.js.map",
+    "runtime-main.js": "/haru/static/js/runtime-main.800c566c.js",
+    "runtime-main.js.map": "/haru/static/js/runtime-main.800c566c.js.map",
+    "static/js/2.ef5e4c22.chunk.js": "/haru/static/js/2.ef5e4c22.chunk.js",
+    "static/js/2.ef5e4c22.chunk.js.map": "/haru/static/js/2.ef5e4c22.chunk.js.map",
+    "index.html": "/haru/index.html",
+    "static/js/2.ef5e4c22.chunk.js.LICENSE.txt": "/haru/static/js/2.ef5e4c22.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.800c566c.js",
+    "static/js/2.ef5e4c22.chunk.js",
+    "static/js/main.4975d228.chunk.js"
+  ]
+}
