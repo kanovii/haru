@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <div className="containers"> 
-        {init ? <AppRouter isLoggedIn={isLoggedIn}/> : 'initializing...'}
+        {init ? <AppRouter isLoggedIn={isLoggedIn}/> : "로그인 확인중"}
       <footer>&copy; haru {new Date().getFullYear()}</footer>
       </div>
      

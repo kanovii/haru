@@ -4,6 +4,7 @@ import { dbService } from '../firebase';
 const HomeApp = () => {
     const [haru, setHaru] = useState('');
     const [harus, setHarus] = useState([]);
+    const [itemsClass, setItemsClass] = useState(true);
     const getHarus = async() => {
         const dbHarus = await dbService.collection('harus').get();
         dbHarus.forEach((document) => {
@@ -36,6 +37,9 @@ const HomeApp = () => {
         const {target: {value}} = e;
         setHaru(value)
     }
+    const onItemsClick = (e) => {
+        setItemsClass(!itemsClass);
+    }
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -43,10 +47,12 @@ const HomeApp = () => {
                 <input className='haru_it' type='submit' value='HARU IT'/>
             </form>
             <div>
-                {harus.map((items) => (
+                {harus.map((items) => {
                     
-                    <h4 className='items'>{items.haru}</h4>
-                ))}
+                    return (
+                        <h4 className={itemsClass ? 'items' : 'items_big'} onClick={onItemsClick}>{items.haru}</h4>
+                    )
+                })}
             </div>
         </div>
     )

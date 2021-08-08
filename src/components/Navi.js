@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const Navi = () => {
 
     return (
-        <ul>
+        <ul className='navi_container'>
             <li>
                 <Link className='navi' to="/">Home</Link>
             </li>
