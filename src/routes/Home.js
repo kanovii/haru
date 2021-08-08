@@ -34,12 +34,13 @@ const HomeApp = () => {
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <input onChange={onChange} type='text' placeholder="what's in there" value={haru}/>
-                <input type='submit' value='HARU IT'/>
+                <input className='haru_text_bar' onChange={onChange} type='text' placeholder="what's in there" value={haru}/>
+                <input className='haru_it' type='submit' value='HARU IT'/>
             </form>
             <div>
                 {harus.map((items) => (
-                    <h4>{items.haru}</h4>
+                    
+                    <h4 className='items'>{items.haru}</h4>
                 ))}
             </div>
         </div>
