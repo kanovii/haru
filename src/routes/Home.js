@@ -21,11 +21,16 @@ const HomeApp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dbService.collection('harus').add({
-            haru,
-            createdAt: Date.now(),
-        })
-        setHaru('');
+        if(haru !== '') {
+            dbService.collection('harus').add({
+                haru,
+                createdAt: Date.now(),
+            })
+            setHaru('');
+        }else{
+            setHaru('');
+        }
+        
     }
     const onChange = (e) => {
         const {target: {value}} = e;
