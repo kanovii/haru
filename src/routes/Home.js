@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { dbService } from '../firebase';
 
 const HomeApp = () => {
     const [haru, setHaru] = useState('');
     const [harus, setHarus] = useState([]);
     const [itemsClass, setItemsClass] = useState(true);
+    const [dummy, reload] = useState(false);
     const getHarus = async() => {
         const dbHarus = await dbService.collection('harus').get();
         dbHarus.forEach((document) => {
@@ -16,9 +18,12 @@ const HomeApp = () => {
         });
     }
     console.log(harus)
+
     useEffect(() => {
         getHarus();
     }, [])
+
+    
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +36,13 @@ const HomeApp = () => {
         }else{
             setHaru('');
         }
+        console.log(harus)
+        setTimeout(hi,500)      
+    }
+    const hi = () => {
+        console.log("hi");
         
+        window.location.reload();
     }
     const onChange = (e) => {
         const {target: {value}} = e;
@@ -40,11 +51,12 @@ const HomeApp = () => {
     const onItemsClick = (e) => {
         setItemsClass(!itemsClass);
     }
+    
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <input className='haru_text_bar' onChange={onChange} type='text' placeholder="what's in there" value={haru}/>
-                <input className='haru_it' type='submit' value='HARU IT'/>
+        <div className='haru_home_container'>
+            <form className='haru_form' onSubmit={onSubmit}>
+                <input className='haru_text_bar' onChange={onChange} type='text' placeholder="하고 싶은 말" value={haru}/>
+                <input className='haru_it'  type='submit' value='HARU IT'/>
             </form>
             <div>
                 {harus.map((items) => {

@@ -41,6 +41,12 @@ footer {
 .navi_container{
     margin-bottom: 160px;
 }
+.haru_home_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .haru_text_bar {
     border: none;
     box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
@@ -50,9 +56,18 @@ footer {
     border-radius: 40px;
     box-sizing: border-box;
     margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s ease-in-out;
+
 }
 .haru_text_bar:focus{
     outline: none;
+    width: 80vw;
+    text-align: center;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+
 }
 .haru_it:hover {
     width: 70px;
@@ -85,6 +100,7 @@ footer {
     color: rgba(0, 0, 0, 0.7);
 
     box-sizing: border-box;
+    transition: 0.3s ease-out;
 
 }
 .items_big {
@@ -99,5 +115,7 @@ footer {
     align-items: center;
     color: rgba(0, 0, 0, 0.7);
 
-    box-sizing: border-box;
+    box-sizing: border-box;    
+    transition: 0.3s ease-out;
+
 }
