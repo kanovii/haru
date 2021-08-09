@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { dbService } from '../firebase';
+import Haru from '../components/Haru';
 
-const HomeApp = () => {
+const HomeApp = ({userObj}) => {
     const [haru, setHaru] = useState('');
     const [harus, setHarus] = useState([]);
-    const [itemsClass, setItemsClass] = useState(true);
-    const [dummy, reload] = useState(false);
-    const getHarus = async() => {
-        const dbHarus = await dbService.collection('harus').get();
-        dbHarus.forEach((document) => {
-            const haruOj = {
-                ...document.data(),
-                id: document.id,
-            }
-            setHarus((prev) => [haruOj, ...prev]);
-        });
-    }
-    console.log(harus)
-
     useEffect(() => {
-        getHarus();
+        dbService.collection('harus').onSnapshot((snapshot) => {
+            const haruArray = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+
+            }))
+            setHarus(haruArray);
+        })
     }, [])
 
     
@@ -29,28 +23,22 @@ const HomeApp = () => {
         e.preventDefault();
         if(haru !== '') {
             dbService.collection('harus').add({
-                haru,
+                text: haru,
                 createdAt: Date.now(),
+                createrId: userObj.uid,
             })
             setHaru('');
         }else{
             setHaru('');
         }
-        console.log(harus)
-        setTimeout(hi,500)      
+  
     }
-    const hi = () => {
-        console.log("hi");
-        
-        window.location.reload();
-    }
+
     const onChange = (e) => {
         const {target: {value}} = e;
         setHaru(value)
     }
-    const onItemsClick = (e) => {
-        setItemsClass(!itemsClass);
-    }
+
     
     return (
         <div className='haru_home_container'>
@@ -59,10 +47,11 @@ const HomeApp = () => {
                 <input className='haru_it'  type='submit' value='HARU IT'/>
             </form>
             <div>
-                {harus.map((items) => {
+                {harus.map((haru) => {
                     
                     return (
-                        <h4 className={itemsClass ? 'items' : 'items_big'} onClick={onItemsClick}>{items.haru}</h4>
+                        <Haru  key={haru.id} haruobj={haru} isOwner={haru.createrId === userObj.uid}/>
+                        //<h4 className={itemsClass ? 'items' : 'items_big'} onClick={onItemsClick}>{items.text}</h4>
                     )
                 })}
             </div>

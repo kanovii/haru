@@ -119,3 +119,34 @@ footer {
     transition: 0.3s ease-out;
 
 }
+.haru_Text_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.delete_edit{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.deldel {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    border: none;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+.editedit {
+    position: absolute;
+    right: 22px;
+    top: 0;
+
+    border: none;
+    border-radius: 2px;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}

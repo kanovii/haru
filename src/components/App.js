@@ -6,10 +6,12 @@ import './App.css';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [init, setInit] = useState(false);
+  const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if(user) {
         setIsLoggedIn(true);
+        setUserObj(user);
       }else {
         setIsLoggedIn(false);
       }
@@ -21,7 +23,7 @@ function App() {
   return (
     <>
       <div className="containers"> 
-        {init ? <AppRouter isLoggedIn={isLoggedIn}/> : "로그인 확인중"}
+        {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "로그인 확인중"}
       <footer>&copy; haru {new Date().getFullYear()}</footer>
       </div>
      
