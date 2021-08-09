@@ -7,17 +7,16 @@ const HomeApp = ({userObj}) => {
     const [haru, setHaru] = useState('');
     const [harus, setHarus] = useState([]);
     useEffect(() => {
-        dbService.collection('harus').onSnapshot((snapshot) => {
+        dbService.collection('harus').orderBy('createdAt','desc').onSnapshot((snapshot) => {
             const haruArray = snapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data(),
 
             }))
             setHarus(haruArray);
+            haruArray.sort();
         })
     }, [])
-
-    
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -38,8 +37,8 @@ const HomeApp = ({userObj}) => {
         const {target: {value}} = e;
         setHaru(value)
     }
+    console.log(harus);
 
-    
     return (
         <div className='haru_home_container'>
             <form className='haru_form' onSubmit={onSubmit}>
